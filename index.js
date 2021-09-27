@@ -12,8 +12,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const output = req.body
-    res.send(output)
+    res.send(req.body)
   })
 
 app.listen(PORT, () => {
