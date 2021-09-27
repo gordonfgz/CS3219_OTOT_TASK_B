@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gordonfgz/CS3219_OTOT_TASK_B#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.13"
   }
 }
