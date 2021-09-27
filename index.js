@@ -9,6 +9,8 @@ app.use(express.urlencoded({extended: false}));
 
 const PORT = process.env.PORT || 3000;
 
+module.exports = app
+
 var users = [
     { name: 'Jeremy', age: 22},
     { name: 'Kelvin', age: 21}
@@ -42,7 +44,6 @@ app.post('/', (req, res) => {
 app.put('/users/:id', (req, res) => {
     try {
         const {id} = req.params;
-        console.log(req.body)
         users[parseInt(id)] = req.body
         res.status(201).send(users);
     } catch (e) {
