@@ -1,3 +1,4 @@
+const e = require('express');
 const express = require('express');
 //const cors = require("cors");
 
@@ -33,7 +34,7 @@ app.post('/', (req, res) => {
             users.push(user);
             res.status(201).send(users);
         } else {
-            res.send("WRONG INPUTS")
+            res.send("TOO MANY INPUTS")
         }
     } catch (e) {
         console.log(e.message)
@@ -54,9 +55,15 @@ app.put('/users/:id', (req, res) => {
 
 app.delete('/users/:id', (req, res) => {
     try {
-        const {id} = parseInt(req.params);
-        users.splice(id, 1)
-        res.status(201).send(users);
+        const {id} = req.params;
+        if (id < users.length && id >= 0) {
+            users.splice(id, 1)
+            res.status(201).send(users);
+        } else {
+            res.send("Index out of bounds");
+        }
+        
+        
     } catch (e) {
         console.log(e.message)
         res.status(404).send("error")
