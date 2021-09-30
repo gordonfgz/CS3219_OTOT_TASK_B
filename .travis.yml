@@ -3,4 +3,11 @@ before_script: chmod 0777 ./node_modules/.bin/mocha
 language: node_js
 node_js:
   - 14.17.6
+deploy:
+  provider: lambda
+  function_name: "lambda-test"
+  region: "us-east-1"
+  role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
+  runtime: "nodejs4.3"
+  handler_name: "handler"
 
