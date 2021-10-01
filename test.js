@@ -11,23 +11,23 @@ chai.use(chaiHttp);
 var assert = require('assert');
 
 var gettestusers = [
-    { name: 'Jeremy', age: 22},
-    { name: 'Kelvin', age: 21}
+    { Id: 1, Name: 'Jeremy', Age: 22},
+    { Id: 2, Name: 'Kelvin', Age: 21}
 ]
 
 var posttestusers = [
-    { name: 'Jeremy', age: 22},
-    { name: 'Kelvin', age: 21},
-    { name: 'Keane', age: 33}
+    { Id: 1, Name: 'Jeremy', Age: 22},
+    { Id: 2, Name: 'Kelvin', Age: 21},
+    { Id: 3, Name: 'Keane', Age: 33}
 ]
 
 var puttestusers = [
-    { name: 'Jerry', age: 21},
-    { name: 'Kelvin', age: 21}
+    { Id: 1, Name: 'Jerry', Age: 21},
+    { Id: 2, Name: 'Kelvin', Age: 21}
 ]
 
 var deletetestusers = [
-    { name: 'Kelvin', age: 21}
+    { Id: 2, Name: 'Kelvin', Age: 21}
 ]
 
 describe('Tests', function() {
@@ -45,7 +45,7 @@ describe('Tests', function() {
     it('should return Jeremy age 22 and Kelvin age 21 and Keane 33' , function() {
         chai.request(server)
                  .post('/')
-                 .send({ name: 'Keane', age: 33})
+                 .send({ Id:3, Name: 'Keane', Age: 33})
                  .end((err, res) => {
                     res.should.have.status(201);
                     assert(res, posttestusers);
@@ -56,7 +56,7 @@ describe('Tests', function() {
     it('should return Jerry age 21 and Kelvin age 21' , function() {
         chai.request(server)
                  .put('/users/0')
-                 .send({ name: 'Jerry', age: 21})
+                 .send({ Id: 1, Name: 'Jerry', Age: 21})
                  .end((err, res) => {
                     res.should.have.status(201);
                     assert(res, puttestusers);
